@@ -1,0 +1,8 @@
+// this `use` expression resolved importer defined in buildStyle.ts.
+@use 'variables' as v;
+
+body {
+  background: v.$background-color;
+}
+
+
