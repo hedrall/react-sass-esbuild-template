@@ -12,6 +12,8 @@
     "build:style:watch": "nodemon --watch src --ext scss --exec \"node -r esbuild-register buildStyle.ts\"",
     "serve:local": "node --require esbuild-register local.ts",
     "browser:reload": "wait-on public/index.js && browser-sync start --notify=false --proxy 'http://localhost:3030' --files 'public/*' --port 3000",
+    "dev:jest": "jest . --watch --verbose",
+    "format": "eslint . --fix",
     "create:component": "node --require esbuild-register scripts/createComponent.ts"
   },
   "keywords": [],

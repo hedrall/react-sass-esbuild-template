@@ -18,8 +18,11 @@ Powered by esbuild, browser-sync, sass, and so on.
 and 
 
 ```npm run dev```
+ 
+# test
 
-# TODO
+```npx tsc -w```
 
-- [ ] eslint
-- [ ] jest  
+and 
+
+```npn run dev:jest```

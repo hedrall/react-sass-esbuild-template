@@ -17,7 +17,6 @@ describe("Top", () => {
   });
 
   test("snapshot", () => {
-    // To wrap with
-    // expect(container).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

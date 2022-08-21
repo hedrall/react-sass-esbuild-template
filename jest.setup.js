@@ -1,11 +1,11 @@
-process.env.TEST = 'true';
-process.env.ENV = 'dev';
+process.env.TEST = "true";
+process.env.ENV = "dev";
 
 // window.matchMedia is not a function の対策
-Object.defineProperty(window, 'matchMedia', {
+Object.defineProperty(window, "matchMedia", {
   writable: true,
   /* eslint-disable no-undef */
-  value: jest.fn().mockImplementation(query => ({
+  value: jest.fn().mockImplementation((query) => ({
     matches: false,
     media: query,
     onchange: null,

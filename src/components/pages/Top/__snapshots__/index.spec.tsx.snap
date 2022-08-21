@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Top snapshot 1`] = `
+<div>
+  <div
+    class="Top"
+  >
+    <div
+      class="Title"
+    >
+      Top Page
+    </div>
+    <div
+      class="Counter"
+    >
+      <div>
+        0
+      </div>
+      <button>
+        count up
+      </button>
+    </div>
+  </div>
+</div>
+`;

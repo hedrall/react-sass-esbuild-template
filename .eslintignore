@@ -5,3 +5,4 @@ public
 node_modules
 bundle
 build.js
+jest.config.js
