@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "repository": "https://github.com/hedrall/react-sass-esbuild-template",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently --prefix \"{time}\" -t \"HH:mm:ss\" -c \"bgCyan.bold,bgGreen.bold,bgGrey.bold,bgMagenta.bold\" -n \"esbuild,BrowserSync,Express\" \"npm run build:js:watch\" \"npm run browser:reload\" \"npm run serve:local\" \"npm run build:style:watch\"",
@@ -16,8 +17,8 @@
     "format": "eslint . --fix",
     "create:component": "node --require esbuild-register scripts/createComponent.ts"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["template", "esbuild", "react", "sass"],
+  "author": "hedrall",
   "license": "ISC",
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
