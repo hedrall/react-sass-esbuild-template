@@ -1,7 +1,7 @@
-import React from 'react';
-import { RecoilRoot } from 'recoil';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { RoutingContent } from '@frontend/components/common/Routing';
+import React from "react";
+import { RecoilRoot } from "recoil";
+import { BrowserRouter as Router } from "react-router-dom";
+import { RoutingContent } from "@frontend/components/common/Routing";
 
 export type DocumentProps = {
   children?: React.ReactElement;

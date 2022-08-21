@@ -1,0 +1,7 @@
+*.d.ts
+dist
+build
+public
+node_modules
+bundle
+build.js

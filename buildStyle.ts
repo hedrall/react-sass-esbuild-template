@@ -1,22 +1,25 @@
-import * as sass from 'sass';
-import { FileImporter } from 'sass';
-import * as path from 'path';
-import * as fs from 'fs';
+import * as sass from "sass";
+import { FileImporter } from "sass";
+import * as path from "path";
+import * as fs from "fs";
 // @ts-ignore
-import glob from 'glob';
+import glob from "glob";
 
-const ASSETS_PATH = path.resolve(__dirname, 'src/assets');
-const OUT_DIR = path.resolve(__dirname, 'public');
-const OUT_FILE_NAME = 'main';
+const ASSETS_PATH = path.resolve(__dirname, "src/assets");
+const OUT_DIR = path.resolve(__dirname, "public");
+const OUT_FILE_NAME = "main";
 const OUT_PATH = path.resolve(OUT_DIR, `${OUT_FILE_NAME}.css`);
 const OUT_MAP_PATH = path.resolve(OUT_DIR, `${OUT_FILE_NAME}.css.map`);
 
 const getComponentStyleFilePaths = async () => {
-  return await new Promise<string[]>(resolve => {
-    glob(path.resolve(__dirname, 'src/components/**/*.@(css|scss)'), (err, files) => {
-      if (err) throw new Error('filed to search css files.');
-      resolve(files);
-    });
+  return await new Promise<string[]>((resolve) => {
+    glob(
+      path.resolve(__dirname, "src/components/**/*.@(css|scss)"),
+      (err, files) => {
+        if (err) throw new Error("filed to search css files.");
+        resolve(files);
+      }
+    );
   });
 };
 
@@ -27,8 +30,8 @@ function emitToFile(result: sass.CompileResult) {
 
 function compile(mainFileWithAtUser: string) {
   const importer: FileImporter = {
-    findFileUrl: url => {
-      if (url === 'variables') {
+    findFileUrl: (url) => {
+      if (url === "variables") {
         return new URL(`file://${ASSETS_PATH}/_variables.scss`);
       }
 
@@ -44,16 +47,16 @@ function compile(mainFileWithAtUser: string) {
 function addImportStatement(paths: string[], mainFile: Buffer) {
   return (
     paths
-      .map(p => {
-        const splits = p.split('/');
-        const fileName = splits.slice(-2)[0].split('.')[0];
+      .map((p) => {
+        const splits = p.split("/");
+        const fileName = splits.slice(-2)[0].split(".")[0];
         const dir = splits.slice(-3)[0];
         // use namespace to not conflict names
         const namespaceName = `${dir}_${fileName}`;
         return `@use '${p}' as ${namespaceName};`;
       })
-      .join('\n') +
-    '\n' +
+      .join("\n") +
+    "\n" +
     mainFile
   );
 }
@@ -63,7 +66,7 @@ async function loadCssFiles() {
   const paths = await getComponentStyleFilePaths();
 
   // load main  file
-  const mainFile = fs.readFileSync(path.resolve(ASSETS_PATH, 'main.scss'));
+  const mainFile = fs.readFileSync(path.resolve(ASSETS_PATH, "main.scss"));
   return { paths, mainFile };
 }
 
@@ -77,5 +80,5 @@ async function loadCssFiles() {
   const result = compile(mainFileWithAtUser);
 
   emitToFile(result);
-  console.log('style compile completed.');
+  console.log("style compile completed.");
 })().catch(console.error);
